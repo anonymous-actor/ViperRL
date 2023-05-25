@@ -2,22 +2,20 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: Alejandro Escontrela # the website title (if blank, full name will be used instead)
-first_name: Alejandro
+title: Video Prediction Rewards # the website title (if blank, full name will be used instead)
+first_name: 
 middle_name: 
-last_name: Escontrela
-email: mail@escontrela.me
-description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Website of AI Researcher and Roboticist Alejandro Escontrela.
-footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
+last_name: 
+email:
+description: 
+footer_text:
 keywords: AI, robotics, ML, artificial, intelligence, reinforcement, learning  # add your own keywords or leave empty
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: uc_logo.png
-# icon: ⚛️  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+# icon: uc_logo.png
+icon: 🐍️  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
-url: https://Alescontrela.github.io # the base hostname & protocol for your site
+url: https://ViperRL.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/
 last_updated: false # set to true if you want to display last updated in the footer
 impressum_path:  # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
@@ -54,13 +52,13 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 # Social integration
 # -----------------------------------------------------------------------------
 
-github_username: alescontrela 
+github_username: 
 gitlab_username: # your GitLab user name
-twitter_username: aleescontrela 
+twitter_username: 
 linkedin_username: # your LinkedIn user name
-scholar_userid: 53OxjmYAAAAJ 
+scholar_userid: 
 orcid_id: # your ORCID ID
-medium_username: alejandroescontrela
+medium_username: 
 quora_username: # your Quora username
 publons_id: # your ID on Publons
 research_gate_profile: # your profile on ResearchGate
@@ -76,58 +74,12 @@ contact_note:
 # Analytics and search engine verification
 # -----------------------------------------------------------------------------
 
-google_analytics: G-0LS8VY9HJQ # your google-analytics ID (format: UA-XXXXXXXXX)
-panelbear_analytics: 7HZ7BpCMplt # panelbear analytics site ID (format: XXXXXXXXX)
+google_analytics: 
+panelbear_analytics: 
 
-google_site_verification: XyWrmS0s13oZm3YGw5ruPZ8_SFL_MASFAkyTMdk-DkM # your google-site-verification ID (Google Search Console)
+google_site_verification:
 bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 
-# -----------------------------------------------------------------------------
-# Blog
-# -----------------------------------------------------------------------------
-
-blog_name: "Alejandro's blog" # blog_name will be displayed in your blog page
-blog_nav_title: blog # your blog must have a title for it to be displayed in the nav bar
-blog_description: I occasionally write about tech... here's some of those writings that made it to the internet
-permalink: /blog/:year/:title/
-
-# Pagination
-pagination:
-  enabled: true
-
-# Comments
-disqus_shortname: al-folio # put your disqus shortname
-# https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-
-# External sources.
-# If you have blog posts published on medium.com or other exteranl sources,
-# you can display them in your blog by adding a link to the RSS feed.
-external_sources:
-  - name: medium.com
-    rss_url: https://medium.com/@alejandroescontrela/feed
-
-# -----------------------------------------------------------------------------
-# Collections
-# -----------------------------------------------------------------------------
-
-collections:
-  news:
-    defaults:
-      layout: post
-    output: true
-    permalink: /news/:path/
-  projects:
-    output: true
-    permalink: /:path/
-    # permalink: /projects/:path/
-  featured_media:
-    output: true
-    permalink: /featured_media/:path/
-
-news_scrollable: false # adds a vertical scroll bar if there are more than 3 news items
-news_limit: 10 # leave blank to include all the news in the `_news` folder
-
-featured_media_limit: 8
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
@@ -162,7 +114,6 @@ keep_files:
 
 # Plug-ins
 plugins:
-  - jekyll-archives
   - jekyll-diagrams
   - jekyll-email-protect
   - jekyll-feed
@@ -191,52 +142,7 @@ jekyll-minifier:
   uglifier_args:
     harmony: true
 
-# -----------------------------------------------------------------------------
-# Jekyll Archives
-# -----------------------------------------------------------------------------
 
-jekyll-archives:
-  enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
-  layouts:
-    year: archive-year
-    tag: archive-tag
-    category: archive-category
-  permalinks:
-    year: '/blog/:year/'
-    tag: '/blog/tag/:name/'
-    category: '/blog/category/:name/'
-
-# -----------------------------------------------------------------------------
-# Jekyll Scholar
-# -----------------------------------------------------------------------------
-
-scholar:
-
-  last_name: Escontrela
-  first_name: Alejandro
-  # first_name: [Albert, A.]
-
-  style: apa
-  locale: en
-
-  source: /_bibliography/
-  bibliography: papers.bib
-  bibliography_template: bib
-  # Note: if you have latex math in your bibtex, the latex filter
-  # preprocessing may conflict with MathJAX if the latter is enabled.
-  # See https://github.com/alshedivat/al-folio/issues/357.
-  bibtex_filters: [latex, smallcaps, superscript]
-
-  replace_strings: true
-  join_strings: true
-
-  details_dir: bibliography
-  details_layout: bibtex.html
-  details_link: Details
-
-  query: "@*"
-
-filtered_bibtex_keywords: [abbr, abstract, arxiv, bibtex_show, html, pdf, selected, supp, blog, code, poster, slides, website, img_path, code, award, n_first_authors] # Filter out certain bibtex entry keywords used internally from the bib output
 
 # -----------------------------------------------------------------------------
 # Responsive WebP Images
@@ -273,15 +179,15 @@ jekyll-diagrams:
 # Optional Features
 # -----------------------------------------------------------------------------
 
-enable_google_analytics:    true  # enables google analytics
-enable_panelbear_analytics: true  # enables panelbear analytics
-enable_google_verification: true  # enables google site verification
+enable_google_analytics:    false  # enables google analytics
+enable_panelbear_analytics: false  # enables panelbear analytics
+enable_google_verification: false  # enables google site verification
 enable_bing_verification:   false  # enables bing site verification
 enable_masonry:             true   # enables automatic project cards arangement
 enable_math:                true   # enables math typesetting (uses MathJax)
 enable_tooltips:            false  # enables automatic tooltip links generated
                                    # for each section titles on pages and posts
-enable_darkmode:            true   # enables switching between light/dark modes
+enable_darkmode:            false   # enables switching between light/dark modes
 enable_navbar_social:       false  # enables displaying social links in the
                                    # navbar on the about page
 enable_project_categories:  false   # enables categorization of projects into
