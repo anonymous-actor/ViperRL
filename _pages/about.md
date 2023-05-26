@@ -6,6 +6,7 @@ description: Using advances in generative modeling to learn reward functions fro
 ---
 
 ## Overview
+---
 
 In this work, we propose using Video Prediction Rewards (VIPER) for reinforcement learning.
 VIPER first learns a video prediction model from expert videos. We then train an agent using
@@ -18,7 +19,7 @@ video model rollouts, enabling faster training times and more interactions with 
 
 <div class="embed-responsive embed-responsive-4by3">
 <video controls autoplay muted loop>
-<source src="{{ site.baseurl | prepend: site.url }}/assets/vid/viper_method.mp4" type="video/mp4">
+<source src="/assets/vid/viper_method.mp4" type="video/mp4">
 </video>
 </div>
 
@@ -29,7 +30,12 @@ We summarize the three key contributions of this paper as follows:
 
 Along the way, we discuss important implementation details that improve the robustness of VIPER.
 
+<br/>
+
 ## Leveraging Video Prediction Rewards for Reinforcement Learning
+---
+
+<br/>
 
 ### Video Modeling
 Our method can integrate any video model that supports computing likelihoods over the joint distribution factorized in the following form:
@@ -48,9 +54,9 @@ $$\max_{\theta} \sum_{t=1}^T \sum_{i=1}^Z \log p_\theta(z^i_t \mid z^{1:i-1}_t, 
 The resulting video model is able to produce videos that capture the complex dynamics and behaviors in each environment. For example, a single task-conditond video model trained on 45 RLBench tasks across two arms produces rollouts which accurately model each task:
 
 
-<img class="mx-auto d-block img-fluid rounded" style="width: 100%;" src="{{ site.baseurl | prepend: site.url }}/assets/gif/rlbench_samples_final.gif"/>
+<img class="mx-auto d-block img-fluid rounded" style="width: 100%;" src="/assets/gif/rlbench_samples_final.gif"/>
 
-
+<br/>
 
 ### Reward Formulation
 
@@ -78,21 +84,23 @@ Where $$\beta$$ balances the relative importance of the VIPER and exploration re
 <div class="row">
     <div class="text-center col-12 col-sm-12 col-md-12 mt-4 mt-md-0">
         <figure class="figure mx-auto d-block rounded">
-            <img class="mx-auto d-block img-fluid rounded" src="{{ site.baseurl | prepend: site.url }}/assets/img/viper/viper_method_figure.png"/>
+            <img class="mx-auto d-block img-fluid rounded" src="/assets/img/viper/viper_method_figure.png"/>
             <figcaption class="figure-caption text-center">Full outline of the VIPER algorithm.</figcaption>
         </figure>
     </div>
 </div>
 
+<br/>
 
 ## Benchmarks
+---
 
 We evaluate using VIPER rewards for policy learning on 15 tasks from the DeepMind Control Suite, 7 tasks from Atari Gym, and 6 tasks from the Robot Learning Benchmark. Aggregate plots of the results are shown below. We compare VIPER to Adversarial Motion Priors, and to a Task Oracle with access to full state information and task reward.
 
 <div class="row">
     <div class="text-center col-12 col-sm-12 col-md-12 mt-4 mt-md-0">
         <figure class="figure mx-auto d-block rounded">
-            <img class="mx-auto d-block img-fluid rounded" src="{{ site.baseurl | prepend: site.url }}/assets/img/viper/results_agg.png"/>
+            <img class="mx-auto d-block img-fluid rounded" src="/assets/img/viper/results_agg.png"/>
             <figcaption class="figure-caption text-center">Aggregate results across 15 DMC tasks, 7 Atari games, and 6 RLBench tasks. DMC results are provided for DrQ and DreamerV3 (Dv3) RL agents. Atari and RLBench results are reported for DreamerV3. Atari scores are computed using Human-Normalized Mean.</figcaption>
         </figure>
     </div>
@@ -103,7 +111,7 @@ We evaluate using VIPER rewards for policy learning on 15 tasks from the DeepMin
 <div class="row">
     <div class="text-center col-12 col-sm-12 col-md-5 mt-4 mt-md-0">
         <figure class="figure mx-auto d-block">
-            <img class="mx-auto d-block img-fluid rounded" style="width: 100%;" src="{{ site.baseurl | prepend: site.url }}/assets/gif/VIPER/DMC_GIFS_final.gif"/>
+            <img class="mx-auto d-block img-fluid rounded" style="width: 100%;" src="/assets/gif/VIPER/DMC_GIFS_final.gif"/>
             <figcaption class="figure-caption text-center">Sample policies learned for the DeepMind Control Suite set of tasks.</figcaption>
         </figure>
     </div>
@@ -131,7 +139,7 @@ We evaluate using VIPER rewards for policy learning on 15 tasks from the DeepMin
 <div class="row">
     <div class="text-center col-12 col-sm-12 col-md-12 mt-4 mt-md-0">
     <figure class="figure mx-auto d-block">
-        <img class="mx-auto d-block img-fluid rounded" style="width: 100%" src="{{ site.baseurl | prepend: site.url }}/assets/gif/VIPER/ATARI_GIFS_final.gif"/>
+        <img class="mx-auto d-block img-fluid rounded" style="width: 100%" src="/assets/gif/VIPER/ATARI_GIFS_final.gif"/>
     <figcaption class="figure-caption text-center">Sample policies learned for Atari games.</figcaption>
     </figure>
     </div>
@@ -154,13 +162,16 @@ robot arm in demonstrations, resulting in very little movement between adjacent 
 <div class="row">
 <div class="text-center col-12 col-sm-12 col-md-12 mt-4 mt-md-0">
     <figure class="figure mx-auto d-block">
-        <img class="mx-auto d-block img-fluid rounded" style="width: 100%;" src="{{ site.baseurl | prepend: site.url }}/assets/gif/VIPER/RLBench_final.gif"/>
+        <img class="mx-auto d-block img-fluid rounded" style="width: 100%;" src="/assets/gif/VIPER/RLBench_final.gif"/>
     <figcaption class="figure-caption text-center">Sample policies learned for RLBench manipulation tasks.</figcaption>
     </figure>
 </div>
 </div>
 
+<br/>
+
 ## Cross-Embodiment Generalization
+---
 
 We seek to understand how this generalization can be used to learn more general reward functions. We train a model on two datasets of different robot arms, and evaluate the cross-embodiment generalization capabilities of the model. Specifically, we gather demonstrations for 23 tasks on the Rethink Robotics Sawyer Arm, and demonstrations for 30 tasks on the Franka Panda robotic arm, where only 20 tasks are overlapping between arms. We then train a task-conditioned autoregressive video model on these demonstration videos and evaluate the video model by querying unseen arm/task combinations, where a single initial frame is used for open loop predictions.
 
@@ -169,13 +180,13 @@ Sample video model rollouts for in distribution training tasks and an OOD arm/ta
 <figure class="figure mx-auto d-block">
 <div class="row">
     <div class="text-center col-4 col-sm-4 col-md-4 mt-4 mt-md-0">
-        <img class="mx-auto d-block w-100 rounded border border-warning" style="border-width: 5px !important;" src="{{ site.baseurl | prepend: site.url }}/assets/gif/VIPER/generalization_saucepan_sawyer.gif"/>
+        <img class="mx-auto d-block w-100 rounded border border-warning" style="border-width: 5px !important;" src="/assets/gif/VIPER/generalization_saucepan_sawyer.gif"/>
     </div>
     <div class="text-center col-4 col-sm-4 col-md-4 mt-4 mt-md-0">
-        <img class="mx-auto d-block w-100 rounded border border-warning" style="border-width: 5px !important;" src="{{ site.baseurl | prepend: site.url }}/assets/gif/VIPER/generalization_umbrella_panda.gif"/>
+        <img class="mx-auto d-block w-100 rounded border border-warning" style="border-width: 5px !important;" src="/assets/gif/VIPER/generalization_umbrella_panda.gif"/>
     </div>
     <div class="text-center col-4 col-sm-4 col-md-4 mt-4 mt-md-0">
-        <img class="mx-auto d-block w-100 rounded border border-success" style="border-width: 5px !important;" src="{{ site.baseurl | prepend: site.url }}/assets/gif/VIPER/generalization_saucepan_panda.gif"/>
+        <img class="mx-auto d-block w-100 rounded border border-success" style="border-width: 5px !important;" src="/assets/gif/VIPER/generalization_saucepan_panda.gif"/>
     </div>
 </div>
 <figcaption class="figure-caption text-center">Sampled video predictions for in distribution reference videos (Left and Middle) and an OOD arm/task combination (Right). The video model displays cross-embodiment generalization to arm/task combination not observed in the training data. Video model generalization can enable specifying new tasks where no reference data is available.</figcaption>
@@ -189,35 +200,45 @@ reasonable trajectories for the arm and task combination
 
 We observe that these generalization capabilities also extend to downstream RL, where we use our trained video model with VIPER to learn a policy for the Franka Robot arm to solve an OOD task without requiring demos for that specific task and arm combination. These results demonstrate a promising direction for future work in applying VIPER to larger scale video models that will be able to better generalize and learn desired behaviors only through a few demonstrations.
 
-<div class="row">
+<div class="row form-group">
     <div class="text-center col-12 col-sm-12 col-md-12 mt-4 mt-md-0">
         <figure class="figure mx-auto d-block rounded">
-            <img class="mx-auto d-block img-fluid rounded" style="width: 80%;" src="{{ site.baseurl | prepend: site.url }}/assets/img/viper/cross_embodiment_generalization.png"/>
+            <img class="mx-auto d-block img-fluid rounded" style="width: 80%;" src="/assets/img/viper/cross_embodiment_generalization.png"/>
             <figcaption class="figure-caption text-center">(Left) Training curve for RL agent trained with VIPER on OOD task. (Right) Task-conditional likelihood for reference and random trajectory for an OOD task.</figcaption>
         </figure>
     </div>
 </div>
 
+<br/>
 
 ## Visualizing Video Model Uncertainty
+---
 
 We can visualize the the uncertainty of the video model by upsampling per-frame log-probabilities for each VQCode. We find that the video model correctly assigns low log probs to trajectories that are not consistent with the reference videos, and high log probs to trajectories that are consistent with the reference videos. We show this for low return trajectories and expert trajectories in the figure below:
 
 <figure class="figure mx-auto d-block">
-<div class="row">
+<div class="row form-group">
     <div class="text-center col-6 col-sm-6 col-md-6 mt-4 mt-md-0">
-        <img class="mx-auto d-block w-100 rounded border border-danger" style="border-width: 3px !important; width: 100%;" src="{{ site.baseurl | prepend: site.url }}/assets/gif/VIPER/uncertainty_rlbench_bad.gif"/>
+        <img class="mx-auto d-block w-100 rounded border border-danger" style="border-width: 10px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_atari_bad.gif"/>
     </div>
     <div class="text-center col-6 col-sm-6 col-md-6 mt-4 mt-md-0">
-        <img class="mx-auto d-block w-100 rounded border border-success" style="border-width: 3px !important; width: 100%;" src="{{ site.baseurl | prepend: site.url }}/assets/gif/VIPER/uncertainty_rlbench_good.gif"/>
+        <img class="mx-auto d-block w-100 rounded border border-success" style="border-width: 3px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_atari_good.gif"/>
     </div>
 </div>
-<div class="row">
+<div class="row form-group">
     <div class="text-center col-6 col-sm-6 col-md-6 mt-4 mt-md-0">
-        <img class="mx-auto d-block w-100 rounded border border-danger" style="border-width: 3px !important; width: 100%;" src="{{ site.baseurl | prepend: site.url }}/assets/gif/VIPER/uncertainty_dmc_bad.gif"/>
+        <img class="mx-auto d-block w-100 rounded border border-danger" style="border-width: 3px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_rlbench_bad.gif"/>
     </div>
     <div class="text-center col-6 col-sm-6 col-md-6 mt-4 mt-md-0">
-        <img class="mx-auto d-block w-100 rounded border border-success" style="border-width: 3px !important; width: 100%;" src="{{ site.baseurl | prepend: site.url }}/assets/gif/VIPER/uncertainty_dmc_good.gif"/>
+        <img class="mx-auto d-block w-100 rounded border border-success" style="border-width: 3px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_rlbench_good.gif"/>
+    </div>
+</div>
+<div class="row form-group">
+    <div class="text-center col-6 col-sm-6 col-md-6 mt-4 mt-md-0">
+        <img class="mx-auto d-block w-100 rounded border border-danger" style="border-width: 3px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_dmc_bad.gif"/>
+    </div>
+    <div class="text-center col-6 col-sm-6 col-md-6 mt-4 mt-md-0">
+        <img class="mx-auto d-block w-100 rounded border border-success" style="border-width: 3px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_dmc_good.gif"/>
     </div>
 </div>
 <figcaption class="figure-caption text-center">Upsampled VQCode conditional log probabilities for low return trajectories (left) and expert trajectories (right). Visualizations correspond to RLBench (top) and DeepMind Control (bottom). RLBench uses 16X16 VQCodes while DMC uses 8X8. Brighther colors correspond to higher log probabilities.</figcaption>
